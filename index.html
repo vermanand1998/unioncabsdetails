@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CABS Record</title>
+</head>
+<body>
+    <h2>UNION CABS DETAILS</h2>
+    <form  method="post" name="google-sheet">
+        <label for="carNumber">Car Number:</label>
+        <input type="text" id="carNumber" name="carNumber" required><br><br>
+
+        <label for="driverName">Driver Name:</label>
+        <input type="text" id="driverName" name="driverName" required><br><br>
+
+        <label for="employeeName">Employee Name:</label>
+        <input type="text" id="employeeName" name="employeeName" required><br><br>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="pickupLocation">Pickup Location:</label>
+        <input type="text" id="pickupLocation" name="pickupLocation" required><br><br>
+
+        <label for="pickupTime">Pickup Time:</label>
+        <input type="time" id="pickupTime" name="pickupTime" required><br><br>
+
+        <label for="dropLocation">Drop Location:</label>
+        <input type="text" id="dropLocation" name="dropLocation" required><br><br>
+
+        <label for="dropTime">Drop Time:</label>
+        <input type="time" id="dropTime" name="dropTime" required><br><br>
+
+        <label for="openingReading">Opening Reading:</label>
+        <input type="number" id="openingReading" name="openingReading" required><br><br>
+
+        <label for="closingReading">Closing Reading:</label>
+        <input type="number" id="closingReading" name="closingReading" required><br><br>
+
+        <label for="totalRunKMs">Total Run KM's:</label>
+        <input type="number" id="totalRunKMs" name="totalRunKMs" required><br><br>
+
+        <label for="extraKMs">Extra KM's:</label>
+        <input type="number" id="extraKMs" name="extraKMs" required><br><br>
+
+        <label for="nightHalts">Night Halts:</label>
+        <input type="number" id="nightHalts" name="nightHalts" required><br><br>
+
+        <label for="totalDays">Total Number of Days:</label>
+        <input type="number" id="totalDays" name="totalDays" required><br><br>
+
+        <input type="submit" value="submit">
+    </form>
+</body>
+<script>
+    const scriptURL='https://script.google.com/macros/s/AKfycbw3W5ZpWB5-nSlBr6xz2RirV-Lq4WzNJCJ-RFG2QdIYA5MySIa1d6zGwcwYbbc3JxcqVw/exec';
+    const form=document.forms['google-sheet']
+    form.addEventListener('submit',e=>{
+        e.preventDefault()
+        fetch(scriptURL,{method:'POST',body:new FormData(form)})
+           .then(response=>alert('Thanks'))
+           .catch(error=>console.error('error', error.message))
+    })
+</script>
+</html>
