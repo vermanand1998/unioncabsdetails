@@ -120,8 +120,9 @@
     form.addEventListener('submit', e => {
         e.preventDefault();
         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-            .then(response => alert('Thanks'))
+            .then(response => alert('Your Details Subimitted Sucessfully Thank You !!'))
             .catch(error => console.error('error', error.message));
+            form.reset();
     });
 </script>
 </html>
