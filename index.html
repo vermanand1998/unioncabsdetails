@@ -2,63 +2,126 @@
 <html>
 <head>
     <title>CABS Record</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 100%;
+            width: 50%; /* Adjust as needed for the desired width */
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 100px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        input[type="number"] {
+            width: 97%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #007BFF; /* Colorful border */
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            input[type="text"],
+            input[type="date"],
+            input[type="time"],
+            input[type="number"] {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <h2>UNION CABS DETAILS</h2>
-    <form  method="post" name="google-sheet">
+    <form method="post" name="google-sheet">
         <label for="carNumber">Car Number:</label>
-        <input type="text" id="carNumber" name="carNumber" required><br><br>
+        <input type="text" id="carNumber" name="carNumber" required>
 
         <label for="driverName">Driver Name:</label>
-        <input type="text" id="driverName" name="driverName" required><br><br>
+        <input type="text" id="driverName" name="driverName" required>
 
         <label for="employeeName">Employee Name:</label>
-        <input type="text" id="employeeName" name="employeeName" required><br><br>
+        <input type="text" id="employeeName" name="employeeName" required>
 
         <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required><br><br>
+        <input type="date" id="date" name="date" required>
 
         <label for="pickupLocation">Pickup Location:</label>
-        <input type="text" id="pickupLocation" name="pickupLocation" required><br><br>
+        <input type="text" id="pickupLocation" name="pickupLocation" required>
 
         <label for="pickupTime">Pickup Time:</label>
-        <input type="time" id="pickupTime" name="pickupTime" required><br><br>
+        <input type="time" id="pickupTime" name="pickupTime" required>
 
         <label for="dropLocation">Drop Location:</label>
-        <input type="text" id="dropLocation" name="dropLocation" required><br><br>
+        <input type="text" id="dropLocation" name="dropLocation" required>
 
         <label for="dropTime">Drop Time:</label>
-        <input type="time" id="dropTime" name="dropTime" required><br><br>
+        <input type="time" id="dropTime" name="dropTime" required>
 
         <label for="openingReading">Opening Reading:</label>
-        <input type="number" id="openingReading" name="openingReading" required><br><br>
+        <input type="number" id="openingReading" name="openingReading" required>
 
         <label for="closingReading">Closing Reading:</label>
-        <input type="number" id="closingReading" name="closingReading" required><br><br>
+        <input type="number" id="closingReading" name="closingReading" required>
 
         <label for="totalRunKMs">Total Run KM's:</label>
-        <input type="number" id="totalRunKMs" name="totalRunKMs" required><br><br>
+        <input type="number" id="totalRunKMs" name="totalRunKMs" required>
 
         <label for="extraKMs">Extra KM's:</label>
-        <input type="number" id="extraKMs" name="extraKMs" required><br><br>
+        <input type="number" id="extraKMs" name="extraKMs" required>
 
         <label for="nightHalts">Night Halts:</label>
-        <input type="number" id="nightHalts" name="nightHalts" required><br><br>
+        <input type="number" id="nightHalts" name="nightHalts" required>
 
         <label for="totalDays">Total Number of Days:</label>
-        <input type="number" id="totalDays" name="totalDays" required><br><br>
+        <input type="number" id="totalDays" name="totalDays" required>
 
         <input type="submit" value="submit">
     </form>
 </body>
 <script>
-    const scriptURL='https://script.google.com/macros/s/AKfycbw3W5ZpWB5-nSlBr6xz2RirV-Lq4WzNJCJ-RFG2QdIYA5MySIa1d6zGwcwYbbc3JxcqVw/exec';
-    const form=document.forms['google-sheet']
-    form.addEventListener('submit',e=>{
-        e.preventDefault()
-        fetch(scriptURL,{method:'POST',body:new FormData(form)})
-           .then(response=>alert('Thanks'))
-           .catch(error=>console.error('error', error.message))
-    })
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzRudLcHRDUIugS86FZNvrzGVkDq0T00SmXZ8kThxwWxyQKYJhy0Vj7cRnW59rdKAOjcA/exec';
+    const form = document.forms['google-sheet'];
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => alert('Thanks'))
+            .catch(error => console.error('error', error.message));
+    });
 </script>
 </html>
