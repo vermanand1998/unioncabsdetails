@@ -69,6 +69,9 @@
 <body>
     <h2>UNION CABS DETAILS</h2>
     <form method="post" name="google-sheet">
+        <label for="driverId">Driver Id:</label>
+        <input type="text" id="driverId" name="driverId" required>
+
         <label for="carNumber">Car Number:</label>
         <input type="text" id="carNumber" name="carNumber" required>
 
@@ -115,14 +118,30 @@
     </form>
 </body>
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzRudLcHRDUIugS86FZNvrzGVkDq0T00SmXZ8kThxwWxyQKYJhy0Vj7cRnW59rdKAOjcA/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz3A4z2uGLauiU6Bz4MAt1Jg_jo39knSkC213-NkDvT11ax4q8jSSyiTja2R68No7pNBg/exec';
     const form = document.forms['google-sheet'];
     form.addEventListener('submit', e => {
         e.preventDefault();
-        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-            .then(response => alert('Your Details Submitted Sucessfully Thank You !!'))
+        const formData = new FormData(form);
+        const formDataObject = {};
+        formData.forEach((value, key) => {
+        formDataObject[key] = value;
+        });
+        console.log(formDataObject);
+        if(formDataObject.driverId=='CAB2024UNION'){
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => alert('Your Details Subimitted Sucessfully Thank You !!'))
             .catch(error => console.error('error', error.message));
             form.reset();
+        }else if(formDataObject.driverId=='CAB2025UNION'){
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => alert('Your Details Subimitted Sucessfully Thank You !!'))
+            .catch(error => console.error('error', error.message));
+            form.reset();
+        }else{
+            alert("You are not registered Driver please contact your Admin !");
+            form.reset();
+        }
     });
 </script>
 </html>
